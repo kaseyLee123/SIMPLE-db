@@ -5,10 +5,12 @@ from astropy.io import ascii
 # Load Ultracool sheet refrences
 doc_id = "1i98ft8g5mzPp2DNno0kcz4B9nzMxdpyz5UquAVhz-U8"  # Last update: 2024-02-04 23:29:26 (UTC)
 
-sheet_id = "453417780"
+sheet_id = "1629779179"
 link = (
     f"https://docs.google.com/spreadsheets/d/{doc_id}/export?format=csv&gid={sheet_id}"
 )
+
+print(link)
 
 # read the csv data into an astropy table
 uc_reference_table = ascii.read(
