@@ -25,6 +25,9 @@ names_ingested = 0
 photometry_ingested = 0
 skipped = 0
 total = 0
+duplicate_measurement = 0
+multiple_sources = 0
+no_sources = 0
 
 # Logger setup
 # This will stream all logger messages to the standard output and
@@ -63,12 +66,19 @@ bones_sheet_table = ascii.read(
 for source in bones_sheet_table:
     bones_name = source["NAME"]
     match = None
+
+    if isnan(source["GAIA_G"]):
+        skipped +=1
+        continue
+
     if len(bones_name) > 0 and bones_name != "null":
         match = find_source_in_db(
             db,
             source["NAME"],
             ra=source["RA"],
             dec=source["DEC"],
+            ra_col_name="ra",
+            dec_col_name="dec"
         )
         if len(match) == 1:
             try:
@@ -85,6 +95,8 @@ for source in bones_sheet_table:
             source["NAME"],
             ra=source["RA"],
             dec=source["DEC"],
+            ra_col_name="ra",
+            dec_col_name="dec",
         )
 
     if len(match) == 1:
@@ -100,8 +112,8 @@ for source in bones_sheet_table:
                 db,
                 source = simple_source,
                 band = band_filter,
-                magnitude = measurement,
-                magnitude_error= error,
+                magnitude = float(measurement),
+                magnitude_error= float(error),
                 telescope = telescope,
                 reference = reference,
                 raise_error = True,
@@ -112,13 +124,25 @@ for source in bones_sheet_table:
             msg = "ingest failed with error " + str(e)
             logger.warning(msg)
             skipped += 1
-            raise AstroDBError(msg) from e
+            if "The measurement may be a duplicate" in str(e):
+                duplicate_measurement += 1
+            else: 
+                raise AstroDBError(msg) from e
+    elif len(match) == 0:
+        skipped+=1
+        no_sources += 1
+    else:
+        skipped +=1
+        multiple_sources +=1
+
             
 
 total = len(bones_sheet_table)
-logger.info("skipped:{skipped}")
-logger.info("photometry_ingested:{photometry_ingested}")
-logger.info("total: {total}")
+logger.info(f"skipped:{skipped}") # 192 skipped
+logger.info(f"photometry_ingested:{photometry_ingested}") # 17 ingsted
+logger.info(f"total: {total}") # 209 total
+logger.info(f"no_sources:{no_sources}") # 69 no sources
+logger.info(f"multiple_sources: {multiple_sources}") # 0 multiple sources
 if DB_SAVE:
     db.save_database(directory="data/")
 
