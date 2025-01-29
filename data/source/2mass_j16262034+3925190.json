@@ -92,6 +92,16 @@
             "reference": "Cutr03"
         },
         {
+            "band": "2MASS.H",
+            "magnitude": 14.533,
+            "magnitude_error": 0.049,
+            "telescope": "2MASS",
+            "epoch": null,
+            "comments": null,
+            "regime": "optical",
+            "reference": "Cutr12"
+        },
+        {
             "band": "2MASS.J",
             "magnitude": 14.435,
             "magnitude_error": 0.029,

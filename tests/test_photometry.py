@@ -15,7 +15,7 @@ from astropy.io.votable.ucd import check_ucd, parse_ucd, UCDWords
         ("WISE.W3", 457),
         ("WISE.W4", 450),
         ("2MASS.J", 1802),
-        ("2MASS.H", 1791),
+        ("2MASS.H", 1856),
         ("2MASS.Ks", 1762),
         ("GPI.Y", 1),
         ("NIRI.Y", 21),

@@ -18,6 +18,9 @@
         },
         {
             "other_name": "WISEA J000430.66-260402.3"
+        },
+        {
+            "other_name": "WISEA J000430.66\u2212260402.3"
         }
     ],
     "Parallaxes": [
@@ -39,6 +42,16 @@
             "comments": null,
             "regime": null,
             "reference": "Cutr03"
+        },
+        {
+            "band": "2MASS.H",
+            "magnitude": 15.587,
+            "magnitude_error": 0.129,
+            "telescope": "2MASS",
+            "epoch": null,
+            "comments": null,
+            "regime": "optical",
+            "reference": "Cutr12"
         },
         {
             "band": "2MASS.J",

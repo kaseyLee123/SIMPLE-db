@@ -14,10 +14,23 @@
     ],
     "Names": [
         {
+            "other_name": "2MASS J14120397+1216100"
+        },
+        {
             "other_name": "ULAS J141203.85+121609.9"
         }
     ],
     "Photometry": [
+        {
+            "band": "2MASS.H",
+            "magnitude": 15.574,
+            "magnitude_error": 0.129,
+            "telescope": "2MASS",
+            "epoch": null,
+            "comments": null,
+            "regime": "optical",
+            "reference": "Cutr12"
+        },
         {
             "band": "WFCAM.H",
             "magnitude": 15.851,

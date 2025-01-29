@@ -63,6 +63,16 @@
     ],
     "Photometry": [
         {
+            "band": "2MASS.H",
+            "magnitude": 13.16,
+            "magnitude_error": 0.035,
+            "telescope": "2MASS",
+            "epoch": null,
+            "comments": null,
+            "regime": "optical",
+            "reference": "Cutr12"
+        },
+        {
             "band": "GAIA2.G",
             "magnitude": 16.884075164794922,
             "magnitude_error": 0.001048377316343379,
