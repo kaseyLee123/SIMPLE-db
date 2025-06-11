@@ -26,8 +26,7 @@ skipped = 0
 total = 0
 already_exists = 0
 multiple_sources = 0
-no_sources = 0
-inside_if = 0
+
 
 
 DB_SAVE = True
@@ -103,7 +102,7 @@ for source in bones_sheet_table:
         ra_col_name="ra",
         dec_col_name="dec",
     )
-
+    """
     if match is None:
         match = find_source_in_db(
             db,
@@ -111,7 +110,7 @@ for source in bones_sheet_table:
             ra=source["RA"],
             dec=source["DEC"],
         )
-
+    """
     if len(match) == 0:
         # ingest_publications for the ADS link
         ads = extractADS(source["ADS_Link"])
